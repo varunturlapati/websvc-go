@@ -1,12 +1,13 @@
-package RedisClient
+package redisclient
 
 import (
 	"fmt"
-	"github.com/go-redis/redis"
-	"github.com/varunturlapati/simpleWebSvc/Article"
 	"time"
-
-	db "github.com/varunturlapati/simpleWebSvc/Db"
+	
+	"github.com/go-redis/redis"
+	
+	"github.com/varunturlapati/simpleWebSvc/pkg/article"
+	db "github.com/varunturlapati/simpleWebSvc/pkg/db"
 )
 
 func New() (*RedisClient, error) {
@@ -66,7 +67,7 @@ func (r *RedisClient) GetEntry(e string) (*db.Entry, error) {
 	if err != nil {
 		return nil, fmt.Errorf("didn't find an entry with id %s\n", e)
 	}
-	var art Article.Article
+	var art article.Article
 	err = art.UnmarshalBinary([]byte(res))
 	if err != nil {
 		return nil, fmt.Errorf("couldn't unmarshal the result into an article")

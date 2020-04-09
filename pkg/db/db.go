@@ -1,8 +1,9 @@
-package Db
+package db
 
 import (
-	a "github.com/varunturlapati/simpleWebSvc/Article"
 	"time"
+	
+	a "github.com/varunturlapati/simpleWebSvc/pkg/article"
 )
 
 type Entry struct {
